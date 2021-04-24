@@ -30,7 +30,7 @@ const ListaAlumnasItem = (props) => {
           {cargando && <LoadingSpinner asOverlay />}
           <Link to={`/alumnas/${props.id}/modificar-alumna`}>
             <div className="alumna-item__imagen">
-              <Avatar alt={props.name} image={props.image} />
+              <Avatar alt={props.name} imagen={`http://localhost:5000/${props.imagen}`} />
             </div>
             <div className="alumna-item__info">
               <h2>{props.name}</h2>

@@ -88,7 +88,6 @@ const ModificarAlumna = () => {
   }, [sendRequest, alumnaId, setFormData]);
 
   const modificarAlumnaSubmitHandler = async (event) => {
-    console.log("ENVIANDO")
     event.preventDefault();
     try {
       await sendRequest(

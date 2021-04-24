@@ -141,7 +141,6 @@ const eliminarTema = async (req, res, next) => {
   res.status(200).json({ mensaje: "Tema eliminado" });
 };
 
-
 // CONTROLADORES ALUMNAS
 
 // CREAR ALUMNA
@@ -162,6 +161,7 @@ const crearAlumna = async (req, res, next) => {
     telefono,
     contraseña,
     cuerda,
+    imagen: req.file.path.replace("\\", "/"),
   });
 
   try {

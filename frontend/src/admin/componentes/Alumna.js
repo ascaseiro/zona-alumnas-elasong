@@ -6,7 +6,7 @@ import Input from "../shared/components/FormElements/Input";
 import Button from "../shared/components/FormElements/Button";
 import ErrorModal from "../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
-import ImageUpload from "../shared/components/FormElements/ImageUpload"
+import ImageUpload from "../shared/components/FormElements/ImageUpload";
 import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from "../shared/utils/validators";
 import { useHttpClient } from "../../hooks/http-hook";
 
@@ -66,22 +66,21 @@ const Alumna = () => {
     event.preventDefault();
 
     try {
+      const formData = new FormData();
+      formData.append("name", formState.inputs.name.value);
+      formData.append("apellidos", formState.inputs.apellidos.value);
+      formData.append("telefono", formState.inputs.telefono.value);
+      formData.append("email", formState.inputs.email.value);
+      formData.append("contraseña", formState.inputs.password.value);
+      formData.append("cuerda", formState.inputs.cuerda.value);
+      formData.append("imagen", formState.inputs.imagen.value);
+
       await sendRequest(
         "http://localhost:5000/admin//nueva-alumna",
         "POST",
-        JSON.stringify({
-          name: formState.inputs.name.value,
-          apellidos: formState.inputs.apellidos.value,
-          telefono: formState.inputs.telefono.value,
-          email: formState.inputs.email.value,
-          contraseña: formState.inputs.password.value,
-          cuerda: formState.inputs.cuerda.value,
-        }),
-        {
-          "Content-Type": "application/json",
-        }
+        formData
       );
-      navegacion.push('/alumnas')
+      navegacion.push("/alumnas");
     } catch (err) {}
   };
 
@@ -106,7 +105,7 @@ const Alumna = () => {
             validators={[VALIDATOR_REQUIRE()]}
             onInput={inputHandler}
           ></Input>
-          <ImageUpload center id="image" onInput={inputHandler} />
+          <ImageUpload center id="imagen" onInput={inputHandler} />
           <Input
             id="apellidos"
             element="input"

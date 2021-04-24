@@ -23,7 +23,7 @@ const ListaAlumnas = (props) => {
             key={alumna.id}
             id={alumna.id}
             name={alumna.name}
-            image={alumna.image}
+            imagen={alumna.imagen}
             cuerda={alumna.cuerda}
             onDelete={props.onDeleteAlumna}
           />
