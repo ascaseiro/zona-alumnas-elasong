@@ -1,0 +1,49 @@
+.alumna-item {
+  margin: 1rem;
+  width: calc(45% - 2rem);
+  min-width: 17.5rem;
+}
+
+.alumna-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  padding: 1rem;
+  color: white;
+  background: #292929;
+}
+
+.alumna-item a:hover,
+.alumna-item a:active {
+  background: #ffd900;
+}
+
+.alumna-item__contenido {
+  padding: 0;
+}
+
+.alumna-item__imagen {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1rem;
+}
+
+.alumna-item__info h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: normal;
+  color: #ffd900;
+}
+
+.alumna-item:hover h2,
+.alumna-item:active h2,
+.alumna-item:hover h3,
+.alumna-item:active h3 {
+  color: #292929;
+}
+
+.alumna-item__info h3 {
+  margin: 0;
+}
