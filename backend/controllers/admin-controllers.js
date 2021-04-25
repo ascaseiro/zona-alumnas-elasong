@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
 const { validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 const HttpError = require("../models/http-error");
 const Alumna = require("../models/alumna");
@@ -154,12 +155,24 @@ const crearAlumna = async (req, res, next) => {
   }
 
   const { name, apellidos, email, telefono, contraseña, cuerda } = req.body;
+
+  let hashedContraseña;
+  try {
+    hashedContraseña = await bcrypt.hash(contraseña, 12)
+  } catch (err) {
+    const error = new HttpError(
+      "Crear Nueva Alumna ha fallado, por favor, vuelve a intentarlo",
+      500
+    )
+    return next(error)
+  }
+
   const alumnaCreada = new Alumna({
     name,
     apellidos,
     email,
     telefono,
-    contraseña,
+    contraseña: hashedContraseña,
     cuerda,
     imagen: req.file.path.replace("\\", "/"),
   });
