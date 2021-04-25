@@ -99,7 +99,7 @@ const Auth = () => {
             id="email"
             element="input"
             type="email"
-            placeholder="Email"
+            placeholder="Email CAMBIADO"
             errorText="Por favor, introduce un email válido"
             validators={[VALIDATOR_REQUIRE(), VALIDATOR_EMAIL()]}
             onInput={inputHandler}
