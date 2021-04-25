@@ -4,6 +4,7 @@ const { validationResult } = require("express-validator");
 const HttpError = require("../models/http-error");
 const Alumna = require("../models/alumna");
 const Tema = require("../models/tema");
+const Recurso = require("../models/recurso");
 
 // CONTROLADORES TEMAS
 
@@ -284,6 +285,86 @@ const eliminarAlumna = async (req, res, next) => {
   res.status(200).json({ mensaje: "Alumna eliminada" });
 };
 
+// CONTROLADORES RECURSOS
+
+// CREAR RECURSO
+const crearRecurso = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new HttpError(
+      "Los datos introducidos son incorrectos. Por favor, revíselos",
+      422
+    );
+  }
+
+  const { name, cuerda } = req.body;
+  const recursoCreado = new Recurso({
+    name,
+    cuerda,
+    temaId: req.params.temaId,
+    imagen: req.file.path.replace("\\", "/"),
+  });
+
+  try {
+    recursoCreado.save();
+  } catch (err) {
+    const error = new HttpError(
+      "Crear Nuevo Recurso ha fallado, por favor, vuelve a intentarlo",
+      500
+    );
+    return next(error);
+  }
+
+  res.status(201).json({ recurso: recursoCreado });
+};
+
+// LISTAR RECURSOS
+const getRecursos = async (req, res, next) => {
+  const temaId = req.params.temaId
+  let recursos;
+  try {
+    recursos = await Recurso.find({temaId: temaId});
+  } catch (err) {
+    const error = new HttpError(
+      "No se ha podido conectar con la base de datos. Por favor, inténtelo de nuevo",
+      500
+    );
+    return next(error);
+  }
+  // recursos = recursos.map((recurso) => recurso.temaId === temaId)
+  res.json({
+    recursos: recursos.map((recurso) => recurso.toObject({ getters: true })),
+  });
+};
+
+// ELIMINAR RECURSO
+const eliminarRecurso = async (req, res, next) => {
+  const recursoId = req.params.recursoId;
+
+  let recurso;
+  try {
+    recurso = await Recurso.findById(recursoId);
+  } catch (err) {
+    const error = new HttpError(
+      "No se ha podido conectar a la base de datos. Por favor, inténtelo de nuevo",
+      500
+    );
+    return next(error);
+  }
+
+  try {
+    await recurso.remove();
+  } catch (err) {
+    const error = new HttpError(
+      "No se ha podido conectar a la base de datos. Por favor, inténtelo de nuevo",
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({ mensaje: "Recurso eliminado" });
+};
+
 exports.getAlumnaById = getAlumnaById;
 exports.getTemaById = getTemaById;
 exports.crearAlumna = crearAlumna;
@@ -294,3 +375,6 @@ exports.modificarTema = modificarTema;
 exports.eliminarTema = eliminarTema;
 exports.eliminarAlumna = eliminarAlumna;
 exports.modificarAlumna = modificarAlumna;
+exports.crearRecurso = crearRecurso;
+exports.getRecursos = getRecursos;
+exports.eliminarRecurso = eliminarRecurso;

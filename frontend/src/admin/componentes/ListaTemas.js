@@ -25,6 +25,7 @@ const ListaTemas = (props) => {
             name={tema.name}
             compositor={tema.compositor}
             año={tema.año}
+            onDelete={props.onDeleteTema}
           />
         );
       })}

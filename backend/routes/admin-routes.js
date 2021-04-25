@@ -3,6 +3,7 @@ const { check } = require("express-validator");
 
 const adminControllers = require("../controllers/admin-controllers");
 const imageUpload = require("../middlewares/image-upload");
+const audioUpload = require("../middlewares/audio-upload");
 
 const router = express.Router();
 
@@ -34,7 +35,7 @@ router.get("/nueva-alumna", (req, res, next) => {
 
 router.post(
   "/nueva-alumna",
-  imageUpload.single('imagen'),
+  imageUpload.single("imagen"),
   check("name").not().isEmpty(),
   check("apellidos").not().isEmpty(),
   check("email").not().isEmpty().isEmail(),
@@ -65,6 +66,24 @@ router.post(
   check("compositor").not().isEmpty(),
   check("año").not().isEmpty(),
   adminControllers.crearTema
+);
+
+// RUTA A NUEVO RECURSO
+router.post(
+  "/temas/:temaId/nuevo-recurso",
+  imageUpload.single("imagen"),
+  check("name").not().isEmpty(),
+  check("cuerda").not().isEmpty(),
+  adminControllers.crearRecurso
+);
+
+// RUTA A LISTAR RECURSOS EXISTENTES
+router.get("/temas/:temaId/modificar-recurso", adminControllers.getRecursos);
+
+// RUTA A ELIMINAR RECURSO EXISTENTE
+router.delete(
+  "/temas/:temaId/modificar-recurso/:recursoId",
+  adminControllers.eliminarRecurso
 );
 
 module.exports = router;

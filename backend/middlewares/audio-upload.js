@@ -3,16 +3,15 @@ const { v4: uuidv4 } = require("uuid");
 
 
 const MIME_TYPE_MAP = {
-  "image/png": "png",
-  "image/jpeg": "jpeg",
-  "image/jpg": "jpg",
+  "audio/mp3": "mp3",
+  "audio/mpeg": "mpeg",
 };
 
-const imageUpload = multer({
+const audioUpload = multer({
   limits: 500000,
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'uploads/imagenes')
+      cb(null, 'uploads/audios')
     },
     filename: (req, file, cb) => {
       const extension = MIME_TYPE_MAP[file.mimetype]
@@ -26,4 +25,4 @@ const imageUpload = multer({
   }
 });
 
-module.exports = imageUpload;
+module.exports = audioUpload;

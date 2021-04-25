@@ -1,6 +1,6 @@
 .alumna-item {
   margin: 1rem;
-  width: calc(45% - 2rem);
+  width: calc(80% - 2rem);
   min-width: 17.5rem;
 }
 
@@ -13,6 +13,7 @@
   padding: 1rem;
   color: white;
   background: #292929;
+  height: 10rem;
 }
 
 .alumna-item a:hover,
@@ -21,13 +22,14 @@
 }
 
 .alumna-item__contenido {
-  padding: 0;
+  padding: 1rem;
+  background: #292929;
 }
 
 .alumna-item__imagen {
   width: 4rem;
   height: 4rem;
-  margin-right: 1rem;
+  margin-right: 2rem;
 }
 
 .alumna-item__info h2 {
@@ -37,10 +39,10 @@
   color: #ffd900;
 }
 
-.alumna-item:hover h2,
-.alumna-item:active h2,
-.alumna-item:hover h3,
-.alumna-item:active h3 {
+.alumna-item a:hover h2,
+.alumna-item a:active h2,
+.alumna-item a:hover h3,
+.alumna-item a:active h3 {
   color: #292929;
 }
 

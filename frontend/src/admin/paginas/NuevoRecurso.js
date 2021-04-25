@@ -1,5 +1,5 @@
 import React, { useCallback, useReducer } from "react";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import Card from "../shared/components/UIElements/Card";
 import Input from "../shared/components/FormElements/Input";
@@ -7,7 +7,7 @@ import Button from "../shared/components/FormElements/Button";
 import ErrorModal from "../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import ImageUpload from "../shared/components/FormElements/ImageUpload";
-import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from "../shared/utils/validators";
+import {  VALIDATOR_REQUIRE } from "../shared/utils/validators";
 import { useHttpClient } from "../../hooks/http-hook";
 
 const formReducer = (state, action) => {
@@ -34,16 +34,17 @@ const formReducer = (state, action) => {
   }
 };
 
-const Alumna = () => {
+const NuevoRecurso = () => {
   const { cargando, error, sendRequest, clearError } = useHttpClient();
+  const temaId = useParams().temaId
 
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
-      email: {
+      name: {
         value: "",
         isValid: false,
       },
-      password: {
+      cuerda: {
         value: "",
         isValid: false,
       },
@@ -62,25 +63,21 @@ const Alumna = () => {
 
   const navegacion = useHistory();
 
-  const alumnaSubmitHandler = async (event) => {
+  const recursoSubmitHandler = async (event) => {
     event.preventDefault();
 
     try {
       const formData = new FormData();
       formData.append("name", formState.inputs.name.value);
-      formData.append("apellidos", formState.inputs.apellidos.value);
-      formData.append("telefono", formState.inputs.telefono.value);
-      formData.append("email", formState.inputs.email.value);
-      formData.append("contraseña", formState.inputs.password.value);
       formData.append("cuerda", formState.inputs.cuerda.value);
       formData.append("imagen", formState.inputs.imagen.value);
 
       await sendRequest(
-        "http://localhost:5000/admin/nueva-alumna",
+        `http://localhost:5000/admin/temas/${temaId}/nuevo-recurso`,
         "POST",
         formData
       );
-      navegacion.push("/alumnas");
+      navegacion.push("/temas");
     } catch (err) {}
   };
 
@@ -93,55 +90,19 @@ const Alumna = () => {
       <ErrorModal error={error} onClear={errorHandler} />
       <Card className="form-control">
         {cargando && <LoadingSpinner asOverlay />}
-        <h2>Introduce los datos de la nueva alumna</h2>
+        <h2>Introduce los datos del nuevo recurso</h2>
         <hr />
-        <form onSubmit={alumnaSubmitHandler}>
+        <form onSubmit={recursoSubmitHandler}>
           <Input
             id="name"
             element="input"
             type="text"
-            placeholder="Nombre de la alumna"
+            placeholder="Nombre del recurso"
             errorText="Por favor, introduce un nombre"
             validators={[VALIDATOR_REQUIRE()]}
             onInput={inputHandler}
           ></Input>
           <ImageUpload center id="imagen" onInput={inputHandler} />
-          <Input
-            id="apellidos"
-            element="input"
-            type="text"
-            placeholder="Apellidos de la alumna"
-            errorText="Por favor, introduce unos apellidos"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          ></Input>
-          <Input
-            id="email"
-            element="input"
-            type="email"
-            placeholder="Email"
-            errorText="Por favor, introduce un email válido"
-            validators={[VALIDATOR_REQUIRE(), VALIDATOR_EMAIL()]}
-            onInput={inputHandler}
-          ></Input>
-          <Input
-            id="telefono"
-            element="input"
-            type="text"
-            placeholder="Teléfono"
-            errorText="Por favor, introduce un número de teléfono"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          ></Input>
-          <Input
-            id="password"
-            element="input"
-            type="password"
-            placeholder="Contraseña"
-            errorText="Por favor, introduce una contraseña"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          ></Input>
           <Input
             id="cuerda"
             element="input"
@@ -160,4 +121,4 @@ const Alumna = () => {
   );
 };
 
-export default Alumna;
+export default NuevoRecurso;

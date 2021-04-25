@@ -11,7 +11,7 @@
 
 .inicio-item {
   margin: 1rem;
-  width: calc(45% - 2rem);
+  width: calc(75% - 2rem);
   min-width: 17.5rem;
 }
 
@@ -24,6 +24,7 @@
   padding: 1rem;
   color: white;
   background: #292929;
+  font-size: 3rem;
 }
 
 .inicio-item a:hover,
@@ -33,6 +34,7 @@
 
 .inicio-item__contenido {
   padding: 0;
+  height: 10rem;
 }
 
 .inicio-item__imagen {

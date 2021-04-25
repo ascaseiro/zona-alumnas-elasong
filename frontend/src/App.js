@@ -15,6 +15,7 @@ import NuevaAlumna from "./admin/paginas/NuevaAlumna";
 import NuevoTema from "./admin/paginas/NuevoTema";
 import AdminModificarAlumna from "./admin/paginas/AdminModificarAlumna";
 import AdminModificarTema from "./admin/paginas/AdminModificarTema";
+import NuevoRecurso from "./admin/paginas/NuevoRecurso"
 import Auth from "./admin/shared/paginas/Auth";
 import { AuthContext } from "./admin/shared/context/auth-context";
 
@@ -43,8 +44,11 @@ const App = () => {
         <Route path="/temas" exact>
           <AdminTemas />
         </Route>
-        <Route path="/recursos" exact>
+        <Route path="/:temaId/recursos" exact>
           <AdminRecursos />
+        </Route>
+        <Route path="/temas/:temaId/nuevo-recurso" exact>
+          <NuevoRecurso />
         </Route>
         <Route path="/nueva-alumna" exact>
           <NuevaAlumna />

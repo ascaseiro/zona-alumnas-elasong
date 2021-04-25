@@ -26,6 +26,13 @@ const AdminTemas = () => {
     clearError();
   };
 
+  const temaBorradoHandler = (temaBorradoId) => {
+    setTemasCargados((temasPrev) =>
+      temasPrev.filter((tema) => tema.id !== temaBorradoId)
+    );
+  };
+
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={errorHandler} />
@@ -34,7 +41,7 @@ const AdminTemas = () => {
           <LoadingSpinner />
         </div>
       )}
-      {!cargando && TemasCargados && <ListaTemas items={TemasCargados} />}
+      {!cargando && TemasCargados && <ListaTemas items={TemasCargados} onDeleteTema={temaBorradoHandler}/>}
     </React.Fragment>
   );
 };
