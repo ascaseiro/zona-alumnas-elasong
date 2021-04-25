@@ -1,0 +1,21 @@
+name: Pipeline que tira de los cambios reactivamente
+
+on:
+  push:
+    branches:
+      - master
+
+name: Pull repo
+jobs:
+  pull-repo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Correr comando remoto
+      uses: docker://evaneos/ssh-action:0.1.0
+      with:
+        hosts: ${{ secrets.PULL_REPO_HOST }}
+        user: ${{ secrets.PULL_REPO_USER }}
+        private_key: ${{ secrets.PULL_REPO_PRIVATE_KEY }}
+        commands: |
+          cd /root/proyecto/zona-alumnas-elasong/
+          git pull origin master
