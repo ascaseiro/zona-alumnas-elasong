@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer, useContext, useState } from "react";
+import React, { useCallback, useReducer, useContext } from "react";
 
 import "./Auth.css";
 import Card from "../components/UIElements/Card";

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 import Card from "../shared/components/UIElements/Card";
@@ -9,7 +9,6 @@ import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import { VALIDATOR_REQUIRE } from "../shared/utils/validators";
 import { useHttpClient } from "../../hooks/http-hook";
 import { useForm } from "../../hooks/form-hook";
-import { AuthContext } from "../shared/context/auth-context";
 
 // const formReducer = (state, action) => {
 //   switch (action.type) {
@@ -36,7 +35,6 @@ import { AuthContext } from "../shared/context/auth-context";
 // };
 
 const NuevoTema = () => {
-  const auth = useContext(AuthContext);
   const { cargando, error, sendRequest, clearError } = useHttpClient();
 
   const [formState, inputHandler] = useForm(

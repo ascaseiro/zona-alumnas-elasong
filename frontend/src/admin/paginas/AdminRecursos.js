@@ -23,7 +23,7 @@ const AdminRecursos = () => {
       } catch (err) {}
     };
     fetchRecursos();
-  }, [sendRequest]);
+  }, [sendRequest, temaId]);
 
   const errorHandler = () => {
     clearError();

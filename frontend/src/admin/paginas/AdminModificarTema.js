@@ -7,7 +7,7 @@ import Input from "../shared/components/FormElements/Input";
 import Button from "../shared/components/FormElements/Button";
 import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../shared/components/UIElements/ErrorModal";
-import { VALIDATOR_REQUIRE, VALIDATOR_EMAIL } from "../shared/utils/validators";
+import { VALIDATOR_REQUIRE } from "../shared/utils/validators";
 import { useForm } from "../../hooks/form-hook";
 import { useHttpClient } from "../../hooks/http-hook";
 
