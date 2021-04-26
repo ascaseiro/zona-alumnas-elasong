@@ -3,7 +3,6 @@ const { check } = require("express-validator");
 
 const adminControllers = require("../controllers/admin-controllers");
 const imageUpload = require("../middlewares/image-upload");
-const audioUpload = require("../middlewares/audio-upload");
 
 const router = express.Router();
 

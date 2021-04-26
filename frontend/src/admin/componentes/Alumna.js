@@ -74,7 +74,6 @@ const Alumna = () => {
       formData.append("contraseña", formState.inputs.password.value);
       formData.append("cuerda", formState.inputs.cuerda.value);
       formData.append("imagen", formState.inputs.imagen.value);
-      formData.append("rol", formState.inputs.rol.value);
 
       await sendRequest(
         "http://localhost:5000/admin/nueva-alumna",
@@ -149,15 +148,6 @@ const Alumna = () => {
             type="text"
             placeholder="Cuerda"
             errorText="Por favor, introduce una cuerda"
-            validators={[VALIDATOR_REQUIRE()]}
-            onInput={inputHandler}
-          ></Input>
-          <Input
-            id="rol"
-            element="input"
-            type="text"
-            placeholder="Rol"
-            errorText="Por favor, introduce un rol de usuario"
             validators={[VALIDATOR_REQUIRE()]}
             onInput={inputHandler}
           ></Input>

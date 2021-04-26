@@ -1,6 +1,6 @@
 .tema-item {
   margin: 1rem;
-  width: calc(45% - 2rem);
+  width: calc(65% - 2rem);
   min-width: 17.5rem;
 }
 
@@ -12,7 +12,7 @@
   text-decoration: none;
   padding: 1rem;
   color: white;
-  background: #292929;
+  background: rgb(0, 96, 114);
   height: 10rem;
 }
 
@@ -22,12 +22,12 @@
 
 .tema-item a:hover,
 .tema-item a:active {
-  background: #ffd900;
+  background: rgb(108, 202, 152);
 }
 
 .tema-item__contenido {
-  padding: 1rem;
-  background: #292929;
+  padding: 0;
+  background: rgb(0, 96, 114);
 }
 
 .tema-item__imagen {
@@ -40,7 +40,7 @@
   font-size: 1.5rem;
   margin: 0 0 0.5rem 0;
   font-weight: normal;
-  color: #ffd900;
+  color: rgb(255, 89, 90);
 }
 
 .tema-item a:hover h2,

@@ -162,7 +162,6 @@ const crearAlumna = async (req, res, next) => {
     telefono,
     contraseña,
     cuerda,
-    rol,
     imagen: req.file.path.replace("\\", "/"),
   });
 

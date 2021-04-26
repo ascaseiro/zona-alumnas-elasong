@@ -32,21 +32,21 @@
 
 .form-control--invalid label,
 .form-control--invalid p {
-  color: red;
+  color: rgb(255, 89, 90);
 }
 
 .form-control--invalid input,
 .form-control--invalid textarea {
-  border-color: red;
+  border-color: rgb(255, 89, 90)gb(163, 163, 163);
   background: #ffd1d1;
 }
 
 .button {
   font: inherit;
   padding: 0.5rem 1.5rem;
-  border: 1px solid #ff0055;
+  border: 1px solid rgb(255, 89, 90);
   border-radius: 4px;
-  background: #ff0055;
+  background: rgb(255, 89, 90);
   color: black;
   cursor: pointer;
   margin-right: 1rem;

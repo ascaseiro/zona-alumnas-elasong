@@ -29,8 +29,6 @@ const AdminRecursos = () => {
     clearError();
   };
 
-  console.log(RecursosCargados)
-
   const recursoBorradoHandler = (recursoBorradoId) => {
     setRecursosCargados((recursosPrev) =>
       recursosPrev.filter((recurso) => recurso.id !== recursoBorradoId)

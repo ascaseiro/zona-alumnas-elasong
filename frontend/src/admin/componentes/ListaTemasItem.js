@@ -35,7 +35,7 @@ const ListaTemasItem = (props) => {
             </div>
           </Link>
           <Button onClick={confirmarBorrarHandler} inverse>Borrar</Button>
-          <Button to={props.id+"/recursos"} succes>Recursos</Button>
+          <Button to={props.id+"/recursos"}>Recursos</Button>
         </Card>
       </li>
     </React.Fragment>

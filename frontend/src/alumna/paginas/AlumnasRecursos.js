@@ -28,8 +28,6 @@ const AlumnaRecursos = () => {
     clearError();
   };
 
-  console.log(RecursosCargados)
-
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={errorHandler} />
