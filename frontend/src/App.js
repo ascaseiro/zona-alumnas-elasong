@@ -19,6 +19,7 @@ import NuevoRecurso from "./admin/paginas/NuevoRecurso"
 import Auth from "./admin/shared/paginas/Auth";
 import AlumnasInicio from "./alumna/paginas/AlumnasInicio"
 import AlumnasTemas from './alumna/paginas/AlumnasTemas'
+import AlumnasRecursos from './alumna/paginas/AlumnasRecursos'
 import { AuthContext } from "./admin/shared/context/auth-context";
 
 const App = () => {
@@ -75,6 +76,9 @@ const App = () => {
         </Route>
         <Route path="/user/temas" exact>
           <AlumnasTemas />
+        </Route>
+        <Route path="/user/:temaId/recursos" exact>
+          <AlumnasRecursos />
         </Route>
         <Route path="/auth" exact>
           <Auth />
