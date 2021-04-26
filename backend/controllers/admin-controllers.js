@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require("uuid");
+const fs = require('fs')
 const { validationResult } = require("express-validator");
 
 const HttpError = require("../models/http-error");
@@ -272,6 +272,8 @@ const eliminarAlumna = async (req, res, next) => {
     return next(error);
   }
 
+  const imagenPath = alumna.imagen
+
   try {
     await alumna.remove();
   } catch (err) {
@@ -281,6 +283,10 @@ const eliminarAlumna = async (req, res, next) => {
     );
     return next(error);
   }
+
+  fs.unlink(imagenPath, err => {
+    console.log(err)
+  })
 
   res.status(200).json({ mensaje: "Alumna eliminada" });
 };
@@ -352,6 +358,8 @@ const eliminarRecurso = async (req, res, next) => {
     return next(error);
   }
 
+  const imagenPath = recurso.imagen
+
   try {
     await recurso.remove();
   } catch (err) {
@@ -361,6 +369,10 @@ const eliminarRecurso = async (req, res, next) => {
     );
     return next(error);
   }
+
+  fs.unlink(imagenPath, err => {
+    console.log(err)
+  })
 
   res.status(200).json({ mensaje: "Recurso eliminado" });
 };

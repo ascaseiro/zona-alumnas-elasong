@@ -23,7 +23,7 @@ const ListaTemasItem = (props) => {
               <h3>{props.año}</h3>
             </div>
           </Link>
-          <Button to={props.id+"/recursos"} succes>Recursos</Button>
+          <Button to={props.id+"/recursos"} succes><h2>Partituras</h2></Button>
         </Card>
       </li>
     </React.Fragment>

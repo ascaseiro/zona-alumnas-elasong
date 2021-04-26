@@ -70,7 +70,7 @@
   
   .nav-links button:hover,
   .nav-links button:active {
-    background: #f8df00;
-    color: #292929;
+    background: rgb(0, 96, 114);
+    color: white;
   }
 }
