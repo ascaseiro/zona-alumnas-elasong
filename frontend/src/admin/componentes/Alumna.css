@@ -1,5 +1,5 @@
 .form-control {
-  margin: 4rem;
+  margin: 3rem;
 }
 
 .form-control label,
@@ -15,19 +15,19 @@
 
 .form-control input,
 .form-control textarea {
-  width: 100%;
-  margin: 1rem 0;
-  font: inherit;
-  border: 1px solid #ccc;
   background: #f8f8f8;
+  border: 1px solid #ccc;
+  font: inherit;
+  margin: 1rem 0;
   padding: 0.15rem 0.25rem;
+  width: 100%;
 }
 
 .form-control input:focus,
 .form-control textarea:focus {
-  outline: none;
   background: #ebebeb;
   border-color: #510077;
+  outline: none;
 }
 
 .form-control--invalid label,
@@ -37,21 +37,21 @@
 
 .form-control--invalid input,
 .form-control--invalid textarea {
-  border-color: rgb(255, 89, 90);
   background: #ffd1d1;
+  border-color: rgb(255, 89, 90);
 }
 
 .button {
-  font: inherit;
-  padding: 0.5rem 1.5rem;
+  background: rgb(255, 89, 90);
   border: 1px solid rgb(255, 89, 90);
   border-radius: 4px;
-  background: rgb(255, 89, 90);
   color: black;
   cursor: pointer;
-  margin-right: 1rem;
-  text-decoration: none;
   display: inline-block;
+  font: inherit;
+  margin-right: 1rem;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
 }
 
 .button:focus {
@@ -70,7 +70,7 @@
 .button:hover:disabled,
 .button:active:disabled {
   background: #ccc;
-  color: #979797;
   border-color: #ccc;
+  color: #979797;
   cursor: not-allowed;
 }

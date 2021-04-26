@@ -6,9 +6,10 @@
   background: rgb(255, 89, 90);
   color: white;
   cursor: pointer;
-  margin-right: 1rem;
+  margin: 1rem;
   text-decoration: none;
   display: inline-block;
+  width: 80%;
 }
 
 .button:focus {

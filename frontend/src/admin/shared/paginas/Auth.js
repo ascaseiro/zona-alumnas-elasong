@@ -2,10 +2,7 @@ import React, { useCallback, useReducer, useContext } from "react";
 
 import "./Auth.css";
 import Card from "../components/UIElements/Card";
-import {
-  VALIDATOR_EMAIL,
-  VALIDATOR_REQUIRE,
-} from "../utils/validators";
+import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from "../utils/validators";
 import ErrorModal from "../components/UIElements/ErrorModal";
 import LoadingSpinner from "../components/UIElements/LoadingSpinner";
 import Input from "../components/FormElements/Input";
@@ -99,7 +96,7 @@ const Auth = () => {
             id="email"
             element="input"
             type="email"
-            placeholder="Email CAMBIADO"
+            placeholder="Email"
             errorText="Por favor, introduce un email válido"
             validators={[VALIDATOR_REQUIRE(), VALIDATOR_EMAIL()]}
             onInput={inputHandler}
@@ -113,9 +110,11 @@ const Auth = () => {
             validators={[VALIDATOR_REQUIRE()]}
             onInput={inputHandler}
           ></Input>
-          <Button type="submit" inverse disabled={!formState.isValid}>
-            Aceptar
-          </Button>
+          <div className="center">
+            <Button type="submit" inverse disabled={!formState.isValid}>
+              Aceptar
+            </Button>
+          </div>
         </form>
       </Card>
     </React.Fragment>

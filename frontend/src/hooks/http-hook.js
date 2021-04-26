@@ -26,18 +26,18 @@ export const useHttpClient = () => {
         );
 
         if (!response.ok) {
-          throw new Error(responseData.message);
+          throw new Error(responseData.mensaje);
         }
 
         setCargando(false);
         return responseData;
       } catch (err) {
-        setError(error.message);
+        setError(err.message);
         setCargando(false);
         throw error;
       }
     },
-    [error]
+    []
   );
 
   const clearError = () => {

@@ -7,7 +7,7 @@ import Button from "../shared/components/FormElements/Button";
 import ErrorModal from "../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import ImageUpload from "../shared/components/FormElements/ImageUpload";
-import {  VALIDATOR_REQUIRE } from "../shared/utils/validators";
+import { VALIDATOR_REQUIRE } from "../shared/utils/validators";
 import { useHttpClient } from "../../hooks/http-hook";
 
 const formReducer = (state, action) => {
@@ -36,7 +36,7 @@ const formReducer = (state, action) => {
 
 const NuevoRecurso = () => {
   const { cargando, error, sendRequest, clearError } = useHttpClient();
-  const temaId = useParams().temaId
+  const temaId = useParams().temaId;
 
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
@@ -112,9 +112,11 @@ const NuevoRecurso = () => {
             validators={[VALIDATOR_REQUIRE()]}
             onInput={inputHandler}
           ></Input>
-          <Button type="submit" inverse disabled={!formState.isValid}>
-            Aceptar
-          </Button>
+          <div className="center">
+            <Button type="submit" inverse disabled={!formState.isValid}>
+              Aceptar
+            </Button>
+          </div>
         </form>
       </Card>
     </React.Fragment>

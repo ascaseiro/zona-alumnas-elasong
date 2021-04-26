@@ -28,15 +28,20 @@ const ListaRecursosItem = (props) => {
         <Card className="recurso-item__contenido">
           {cargando && <LoadingSpinner asOverlay />}
           <a href={`http://localhost:5000/${props.imagen}`}>
-          <div className="recurso-item__imagen">
-              <Avatar alt={props.name} imagen={`http://localhost:5000/${props.imagen}`} />
+            <div className="recurso-item__imagen">
+              <Avatar
+                alt={props.name}
+                imagen={`http://localhost:5000/${props.imagen}`}
+              />
             </div>
             <div className="recurso-item__info">
               <h2>{props.name}</h2>
               <h3>{props.cuerda}</h3>
             </div>
           </a>
-          <Button onClick={confirmarBorrarHandler}>Borrar</Button>
+          <div className="center">
+            <Button onClick={confirmarBorrarHandler}>Borrar</Button>
+          </div>
         </Card>
       </li>
     </React.Fragment>

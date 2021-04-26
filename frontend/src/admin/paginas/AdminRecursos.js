@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import ListaRecursos from "../componentes/ListaRecursos";
 import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../shared/components/UIElements/ErrorModal";
-import Button from '../shared/components/FormElements/Button'
+import Button from "../shared/components/FormElements/Button";
 import { useHttpClient } from "../../hooks/http-hook";
 
 const AdminRecursos = () => {
@@ -37,7 +37,11 @@ const AdminRecursos = () => {
 
   return (
     <React.Fragment>
-      <Button to={"/temas/" + temaId + "/nuevo-recurso"}>Añadir nuevo recurso</Button>
+      <div className="center">
+        <Button to={"/temas/" + temaId + "/nuevo-recurso"}>
+          Añadir nueva partitura
+        </Button>
+      </div>
 
       <ErrorModal error={error} onClear={errorHandler} />
       {cargando && (

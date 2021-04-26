@@ -151,9 +151,11 @@ const Alumna = () => {
             validators={[VALIDATOR_REQUIRE()]}
             onInput={inputHandler}
           ></Input>
-          <Button type="submit" inverse disabled={!formState.isValid}>
-            Aceptar
-          </Button>
+          <div className="center">
+            <Button type="submit" inverse disabled={!formState.isValid}>
+              Aceptar
+            </Button>
+          </div>
         </form>
       </Card>
     </React.Fragment>

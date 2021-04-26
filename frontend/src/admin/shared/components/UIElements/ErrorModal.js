@@ -7,9 +7,9 @@ const ErrorModal = props => {
   return (
     <Modal
       onCancel={props.onClear}
-      header="An Error Occurred!"
+      header="Ha ocurrido un error!"
       show={!!props.error}
-      footer={<Button onClick={props.onClear}>Okay</Button>}
+      footer={<div className="center"><Button onClick={props.onClear}>Aceptar</Button></div>}
     >
       <p>{props.error}</p>
     </Modal>

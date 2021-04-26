@@ -105,7 +105,7 @@ const ModificarAlumna = () => {
           "Content-Type": "application/json",
         }
       );
-      navegacion.push('/alumnas');
+      navegacion.push("/alumnas");
     } catch (err) {}
   };
 
@@ -198,9 +198,11 @@ const ModificarAlumna = () => {
             initialValue={alumnaCargada.cuerda}
             initialValid={true}
           />
-          <Button type="submit" disabled={!formState.isValid}>
-            Aceptar
-          </Button>
+          <div className="center">
+            <Button type="submit" disabled={!formState.isValid}>
+              Aceptar
+            </Button>
+          </div>
         </form>
       )}
     </React.Fragment>

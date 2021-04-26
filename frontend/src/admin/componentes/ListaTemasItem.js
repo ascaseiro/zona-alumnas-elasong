@@ -34,8 +34,16 @@ const ListaTemasItem = (props) => {
               <h3>{props.año}</h3>
             </div>
           </Link>
-          <Button onClick={confirmarBorrarHandler} inverse>Borrar</Button>
-          <Button to={props.id+"/recursos"}><h2>Partituras</h2></Button>
+          <div className="center">
+            <Button onClick={confirmarBorrarHandler} inverse>
+              Borrar
+            </Button>
+          </div>
+          <div className="center">
+            <Button className="partituras" to={props.id + "/recursos"}>
+              <h2>Partituras</h2>
+            </Button>
+          </div>
         </Card>
       </li>
     </React.Fragment>

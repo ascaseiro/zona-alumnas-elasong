@@ -138,9 +138,11 @@ const ModificarTema = () => {
             initialValue={temaCargado.año}
             initialValid={true}
           />
-          <Button type="submit" disabled={!formState.isValid}>
-            Aceptar
-          </Button>
+          <div className="center">
+            <Button type="submit" disabled={!formState.isValid}>
+              Aceptar
+            </Button>
+          </div>
         </form>
       )}
     </React.Fragment>

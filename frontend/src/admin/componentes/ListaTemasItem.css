@@ -53,3 +53,7 @@
 .tema-item__info h3 {
   margin: 0;
 }
+
+.partituras {
+  height: 5rem !important;
+}
