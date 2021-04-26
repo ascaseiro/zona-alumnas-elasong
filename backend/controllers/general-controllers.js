@@ -25,7 +25,9 @@ const login = async (req, res, next) => {
     return next(error);
   }
 
-  res.json({ mensaje: "Logged in!" });
+  console.log(usuarioIdentificado.rol)
+
+  res.json({ rol: usuarioIdentificado.rol });
 };
 
 exports.login = login;

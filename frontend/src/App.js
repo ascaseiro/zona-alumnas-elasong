@@ -17,6 +17,8 @@ import AdminModificarAlumna from "./admin/paginas/AdminModificarAlumna";
 import AdminModificarTema from "./admin/paginas/AdminModificarTema";
 import NuevoRecurso from "./admin/paginas/NuevoRecurso"
 import Auth from "./admin/shared/paginas/Auth";
+import AlumnasInicio from "./alumna/paginas/AlumnasInicio"
+import AlumnasTemas from './alumna/paginas/AlumnasTemas'
 import { AuthContext } from "./admin/shared/context/auth-context";
 
 const App = () => {
@@ -68,10 +70,16 @@ const App = () => {
   } else {
     routes = (
       <React.Fragment>
+        <Route path="/user" exact>
+          <AlumnasInicio />
+        </Route>
+        <Route path="/user/temas" exact>
+          <AlumnasTemas />
+        </Route>
         <Route path="/auth" exact>
           <Auth />
         </Route>
-        <Redirect to="/auth" />
+        <Redirect to="/user" />
       </React.Fragment>
     );
   }

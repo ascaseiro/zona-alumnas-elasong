@@ -154,7 +154,7 @@ const crearAlumna = async (req, res, next) => {
     );
   }
 
-  const { name, apellidos, email, telefono, contraseña, cuerda } = req.body;
+  const { name, apellidos, email, telefono, contraseña, cuerda, rol } = req.body;
   const alumnaCreada = new Alumna({
     name,
     apellidos,
@@ -162,6 +162,7 @@ const crearAlumna = async (req, res, next) => {
     telefono,
     contraseña,
     cuerda,
+    rol,
     imagen: req.file.path.replace("\\", "/"),
   });
 

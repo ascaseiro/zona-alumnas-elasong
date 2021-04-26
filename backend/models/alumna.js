@@ -11,6 +11,7 @@ const alumnaSchema = new Schema({
   contraseña: { type: String, required: true },
   cuerda: { type: String, required: true },
   imagen: { type: String, required: false },
+  rol: { type: String, required: true },
 });
 
 alumnaSchema.plugin(uniqueValidator)
