@@ -15,24 +15,27 @@ import NuevaAlumna from "./admin/paginas/NuevaAlumna";
 import NuevoTema from "./admin/paginas/NuevoTema";
 import AdminModificarAlumna from "./admin/paginas/AdminModificarAlumna";
 import AdminModificarTema from "./admin/paginas/AdminModificarTema";
-import NuevoRecurso from "./admin/paginas/NuevoRecurso"
+import NuevoRecurso from "./admin/paginas/NuevoRecurso";
 import Auth from "./admin/shared/paginas/Auth";
 import { AuthContext } from "./admin/shared/context/auth-context";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(false);
+  const [userId, setUserId] = useState(false);
 
-  const login = useCallback(() => {
-    setIsLoggedIn(true);
+  const login = useCallback((uid, token) => {
+    setToken(token);
+    setUserId(uid);
   }, []);
 
   const logout = useCallback(() => {
-    setIsLoggedIn(false);
+    setToken(null);
+    setUserId(null);
   }, []);
 
   let routes;
 
-  if (isLoggedIn) {
+  if (token) {
     routes = (
       <React.Fragment>
         <Route path="/admin" exact>
@@ -78,7 +81,12 @@ const App = () => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+      value={{
+        isLoggedIn: !!token,
+        token: token,
+        login: login,
+        logout: logout,
+      }}
     >
       <Router>
         <MainNavigation />

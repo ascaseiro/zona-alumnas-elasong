@@ -1,5 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 const { validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const HttpError = require("../models/http-error");
 const Alumna = require("../models/alumna");
@@ -155,12 +157,24 @@ const crearAlumna = async (req, res, next) => {
   }
 
   const { name, apellidos, email, telefono, contraseña, cuerda } = req.body;
+
+  let hashedContraseña;
+  try {
+    hashedContraseña = await bcrypt.hash(contraseña, 12);
+  } catch (err) {
+    const error = new HttpError(
+      "No se ha podido crear al usuario. Por favor, inténtalo de nuevo",
+      500
+    );
+    return next(error);
+  }
+
   const alumnaCreada = new Alumna({
     name,
     apellidos,
     email,
     telefono,
-    contraseña,
+    contraseña: hashedContraseña,
     cuerda,
     imagen: req.file.path.replace("\\", "/"),
   });
@@ -175,7 +189,23 @@ const crearAlumna = async (req, res, next) => {
     return next(error);
   }
 
-  res.status(201).json({ alumna: alumnaCreada });
+  let token;
+  try {
+    token = jwt.sign(
+      { alumnaId: alumnaCreada.id, email: alumnaCreada.email },
+      "clave-privada-secreta",
+      { expiresIn: "1h" }
+    );  
+  } catch (err) {
+    const error = new HttpError(
+      "Crear Nueva Alumna ha fallado, por favor, vuelve a intentarlo",
+      500
+    );
+    return next(error);
+
+  }
+
+  res.status(201).json({ userId: alumnaCreada.id, email: alumnaCreada.email, token: token });
 };
 
 // GET TODAS LAS ALUMNAS
@@ -320,10 +350,10 @@ const crearRecurso = async (req, res, next) => {
 
 // LISTAR RECURSOS
 const getRecursos = async (req, res, next) => {
-  const temaId = req.params.temaId
+  const temaId = req.params.temaId;
   let recursos;
   try {
-    recursos = await Recurso.find({temaId: temaId});
+    recursos = await Recurso.find({ temaId: temaId });
   } catch (err) {
     const error = new HttpError(
       "No se ha podido conectar con la base de datos. Por favor, inténtelo de nuevo",

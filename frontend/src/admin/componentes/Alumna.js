@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from "react";
+import React, { useCallback, useReducer, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import Card from "../shared/components/UIElements/Card";
@@ -9,6 +9,7 @@ import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import ImageUpload from "../shared/components/FormElements/ImageUpload";
 import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from "../shared/utils/validators";
 import { useHttpClient } from "../../hooks/http-hook";
+import { AuthContext } from "../shared/context/auth-context";
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -35,6 +36,7 @@ const formReducer = (state, action) => {
 };
 
 const Alumna = () => {
+  const auth = useContext(AuthContext)
   const { cargando, error, sendRequest, clearError } = useHttpClient();
 
   const [formState, dispatch] = useReducer(formReducer, {
@@ -78,7 +80,9 @@ const Alumna = () => {
       await sendRequest(
         "http://localhost:5000/admin/nueva-alumna",
         "POST",
-        formData
+        formData, {
+          Authorization: 'Bearer ' + auth.token
+        }
       );
       navegacion.push("/alumnas");
     } catch (err) {}

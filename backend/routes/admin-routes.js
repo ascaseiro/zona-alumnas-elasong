@@ -3,9 +3,11 @@ const { check } = require("express-validator");
 
 const adminControllers = require("../controllers/admin-controllers");
 const imageUpload = require("../middlewares/image-upload");
-const audioUpload = require("../middlewares/audio-upload");
+const auth = require("../middlewares/auth");
 
 const router = express.Router();
+
+router.use(auth)
 
 // RUTA A COMPONENTE ADMIN INICIO
 router.get("/", (req, res, next) => {

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import ListaAlumnas from "../componentes/ListaAlumnas";
 import LoadingSpinner from "../shared/components/UIElements/LoadingSpinner";
 import ErrorModal from "../shared/components/UIElements/ErrorModal";
 import { useHttpClient } from "../../hooks/http-hook";
+import { AuthContext } from "../shared/context/auth-context";
 
 const AdminAlumnas = () => {
+  const auth = useContext(AuthContext);
   const { cargando, error, sendRequest, clearError } = useHttpClient();
   const [alumnasCargadas, setAlumnasCargadas] = useState();
 
@@ -13,7 +15,12 @@ const AdminAlumnas = () => {
     const fetchAlumnas = async () => {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5000/admin/alumnas"
+          "http://localhost:5000/admin/alumnas",
+          "GET",
+          {},
+          {
+            Authorization: "Bearer " + auth.token,
+          }
         );
 
         setAlumnasCargadas(responseData.alumnas);
