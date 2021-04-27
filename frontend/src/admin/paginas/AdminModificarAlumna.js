@@ -50,7 +50,7 @@ const ModificarAlumna = () => {
     const fetchAlumna = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/admin/alumnas/${alumnaId}/modificar-alumna`
+          `backend:5000/admin/alumnas/${alumnaId}/modificar-alumna`
         );
         setAlumnaCargada(responseData.alumna);
         setFormData(
@@ -91,7 +91,7 @@ const ModificarAlumna = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        `http://localhost:5000/admin/alumnas/${alumnaId}/modificar-alumna`,
+        `backend:5000/admin/alumnas/${alumnaId}/modificar-alumna`,
         "PATCH",
         JSON.stringify({
           name: formState.inputs.name.value,

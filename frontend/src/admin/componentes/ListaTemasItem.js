@@ -14,7 +14,7 @@ const ListaTemasItem = (props) => {
   const confirmarBorrarHandler = async () => {
     try {
       await sendRequest(
-        `http://localhost:5000/admin/temas/${props.id}/modificar-tema`,
+        `backend:5000/admin/temas/${props.id}/modificar-tema`,
         "DELETE"
       );
       props.onDelete(props.id);

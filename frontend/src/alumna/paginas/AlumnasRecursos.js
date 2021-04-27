@@ -15,7 +15,7 @@ const AlumnaRecursos = () => {
     const fetchRecursos = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/admin/temas/${temaId}/modificar-recurso`
+          `backend:5000/admin/temas/${temaId}/modificar-recurso`
         );
 
         setRecursosCargados(responseData.recursos);

@@ -14,7 +14,7 @@ const ListaRecursosItem = (props) => {
   const confirmarBorrarHandler = async () => {
     try {
       await sendRequest(
-        `http://localhost:5000/admin/temas/${props.temaId}/modificar-recurso/${props.id}`,
+        `backend:5000/admin/temas/${props.temaId}/modificar-recurso/${props.id}`,
         "DELETE"
       );
       props.onDelete(props.id);
@@ -27,11 +27,11 @@ const ListaRecursosItem = (props) => {
       <li className="recurso-item">
         <Card className="recurso-item__contenido">
           {cargando && <LoadingSpinner asOverlay />}
-          <a href={`http://localhost:5000/${props.imagen}`}>
+          <a href={`backend:5000/${props.imagen}`}>
             <div className="recurso-item__imagen">
               <Avatar
                 alt={props.name}
-                imagen={`http://localhost:5000/${props.imagen}`}
+                imagen={`backend:5000/${props.imagen}`}
               />
             </div>
             <div className="recurso-item__info">

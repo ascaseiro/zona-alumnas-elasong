@@ -38,7 +38,7 @@ const ModificarTema = () => {
     const fetchTema = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/admin/temas/${temaId}/modificar-tema`
+          `backend:5000/admin/temas/${temaId}/modificar-tema`
         );
         setTemaCargado(responseData.tema);
         setFormData(
@@ -67,7 +67,7 @@ const ModificarTema = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        `http://localhost:5000/admin/temas/${temaId}/modificar-tema`,
+        `backend:5000/admin/temas/${temaId}/modificar-tema`,
         "PATCH",
         JSON.stringify({
           name: formState.inputs.name.value,

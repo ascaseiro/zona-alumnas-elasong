@@ -13,7 +13,7 @@ const AlumnasTemas = () => {
     const fetchTemas = async () => {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5000/admin/temas"
+          "backend:5000/admin/temas"
         );
 
         setTemasCargados(responseData.temas);

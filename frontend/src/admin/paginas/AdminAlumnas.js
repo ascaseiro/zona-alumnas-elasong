@@ -13,7 +13,7 @@ const AdminAlumnas = () => {
     const fetchAlumnas = async () => {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5000/admin/alumnas"
+          "backend:5000/admin/alumnas"
         );
 
         setAlumnasCargadas(responseData.alumnas);

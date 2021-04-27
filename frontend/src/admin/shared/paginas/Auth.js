@@ -66,7 +66,7 @@ const Auth = () => {
 
     try {
       await sendRequest(
-        "http://localhost:5000/api/login",
+        "backend:5000/api/login",
         "POST",
         JSON.stringify({
           email: formState.inputs.email.value,
