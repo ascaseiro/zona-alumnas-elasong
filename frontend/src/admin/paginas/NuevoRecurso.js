@@ -73,7 +73,7 @@ const NuevoRecurso = () => {
       formData.append("imagen", formState.inputs.imagen.value);
 
       await sendRequest(
-        `backend:5000/admin/temas/${temaId}/nuevo-recurso`,
+        `http://206.189.105.11:5000/admin/temas/${temaId}/nuevo-recurso`,
         "POST",
         formData
       );

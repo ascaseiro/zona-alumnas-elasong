@@ -38,7 +38,7 @@ const NuevoTema = () => {
 
     try {
       await sendRequest(
-        "backend:5000/admin/nuevo-tema",
+        "http://206.189.105.11:5000/admin/nuevo-tema",
         "POST",
         JSON.stringify({
           name: formState.inputs.name.value,

@@ -13,7 +13,7 @@ const AdminTemas = () => {
     const fetchTemas = async () => {
       try {
         const responseData = await sendRequest(
-          "backend:5000/admin/temas"
+          "http://206.189.105.11:5000/admin/temas"
         );
 
         setTemasCargados(responseData.temas);

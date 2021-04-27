@@ -15,9 +15,9 @@ const ListaRecursosItem = (props) => {
       <li className="recurso-item">
         <Card className="recurso-item__contenido">
           {cargando && <LoadingSpinner asOverlay />}
-          <a href={`backend:5000/${props.imagen}`}>
+          <a href={`http://206.189.105.11:5000/${props.imagen}`}>
           <div className="recurso-item__imagen">
-              <Avatar alt={props.name} imagen={`backend:5000/${props.imagen}`} />
+              <Avatar alt={props.name} imagen={`http://206.189.105.11:5000/${props.imagen}`} />
             </div>
             <div className="recurso-item__info">
               <h2>{props.name}</h2>

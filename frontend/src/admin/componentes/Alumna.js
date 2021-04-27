@@ -76,7 +76,7 @@ const Alumna = () => {
       formData.append("imagen", formState.inputs.imagen.value);
 
       await sendRequest(
-        "backend:5000/admin/nueva-alumna",
+        "http://206.189.105.11:5000/admin/nueva-alumna",
         "POST",
         formData
       );

@@ -66,7 +66,7 @@ const Auth = () => {
 
     try {
       await sendRequest(
-        "backend:5000/api/login",
+        "http://206.189.105.11:5000/api/login",
         "POST",
         JSON.stringify({
           email: formState.inputs.email.value,
@@ -89,7 +89,7 @@ const Auth = () => {
       <ErrorModal error={error} onClear={errorHandler} />
       <Card className="form-control">
         {cargando && <LoadingSpinner asOverlay />}
-        <h2>Identifícate para acceder</h2>
+        <h2>Identifícate para acceder CAMBIADO</h2>
         <hr />
         <form onSubmit={authSubmitHandler}>
           <Input

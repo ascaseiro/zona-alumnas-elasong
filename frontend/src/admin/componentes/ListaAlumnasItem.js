@@ -15,7 +15,7 @@ const ListaAlumnasItem = (props) => {
   const confirmarBorrarHandler = async () => {
     try {
       await sendRequest(
-        `backend:5000/admin/alumnas/${props.id}/modificar-alumna`,
+        `http://206.189.105.11:5000/admin/alumnas/${props.id}/modificar-alumna`,
         "DELETE"
       );
       props.onDelete(props.id);
@@ -32,7 +32,7 @@ const ListaAlumnasItem = (props) => {
             <div className="alumna-item__imagen">
               <Avatar
                 alt={props.name}
-                imagen={`backend:5000/${props.imagen}`}
+                imagen={`http://206.189.105.11:5000/${props.imagen}`}
               />
             </div>
             <div className="alumna-item__info">
